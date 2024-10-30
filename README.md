@@ -1,0 +1,2 @@
+# linkinind
+kind and link
